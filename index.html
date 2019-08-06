@@ -1,0 +1,694 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+  <link href="bootstrap.min.css" rel="stylesheet">
+  <script src="jquery-2.2.4.js"></script>
+  <script src="bootstrap.min.js"></script>
+
+  
+  <link href="custom-style.css" rel="stylesheet"> 
+</head>
+<body>
+
+
+<div class="container" style="width:101%">
+
+<div class="row heading_btn">
+   <div class="col-md-8">
+    <h3 class="heading">Company Management</h3>
+   </div>
+   <div class="col-md-4">
+    <p class="pull-right btn-new">
+      <a class="btn btn-default  btn_style" href="search-company.php">Back</a>
+    </p>
+   </div>
+</div>
+
+
+  <!-- <form class="form-horizontal" action="create.php" method="post"> -->
+        
+
+    <form name="frmMain" action="" method="post" enctype="multipart/form-data">
+      <input type="hidden" name="action" value="Add">
+      <input type="hidden" name="contact_id" value="">
+      <input type="hidden" name="old_org_cert" value="">
+      <input type="hidden" name="old_FT_Federation" value="">
+      <input type="hidden" name="old_FairTrade_Cert" value="">
+      <input type="hidden" name="old_SPP_Cert" value="">
+      <input type="hidden" name="old_BCorp_Cert" value="">
+      <input type="hidden" name="old_comp_logo" value="">
+        
+    <table width="90%" class="table table-striped table-bordered" style="margin-bottom:0px;background-color:white;margin: auto;" border="1" cellspacing="0" cellpadding="0">
+      <tbody>
+      <tr>
+        <td colspan="12">Summary</td>
+      </tr>
+
+      <tr>
+          
+        <td colspan="6" width="50%">
+          <table width="100%" class="table table-striped table-bordered commit" style="margin-bottom:0px;">
+            <tbody>
+              <tr>
+                <td width="40%">Item-Id</td>
+                <td>
+                  <input name="Company" size="20" value="" type="text">
+                </td>
+                <td width="40%">Item-Code</td>
+                <td>
+                  <input name="Company" size="20" value="" type="text">
+                </td>
+              </tr>
+              <tr>
+                <td width="40%">Country</td>
+                <td>
+                  <select name="country_type" id="sel_type">
+                    <option value="MC">Select Country</option>
+                    <option value="V">Brazil</option>
+                    <option value="3">Canada</option>
+                    <option value="5">France</option>
+                  </select>
+                </td>
+                <td width="40%">Seller</td>
+                <td>
+                  <select name="country_type" id="sel_type">
+                    <option value="MC">Select Seller</option>
+                    <option value="V">ACRIM</option>
+                    <option value="3">AIPED</option>
+                  </select>
+                </td>
+              </tr>
+              <tr>
+                <td width="40%">Quantity</td>
+                <td>
+                  <input name="Company" size="20" value="" type="text">
+                </td>
+                <td width="40%">Producer Group</td>
+                <td>
+                  <select name="country_type" id="sel_type">
+                    <option value="MC">Select Group</option>
+                    <option value="V">ACRIM</option>
+                    <option value="3">AIPED</option>
+                  </select>
+                </td>
+              </tr>
+              <tr>
+                <td width="40%">Crop Year</td>
+                <td>
+                  <input name="Company" size="20" value="" type="text">
+                </td>
+                <td colspan="2">SPP Cert:   
+                  <input type="checkbox" name="spp_cert" value="1">
+                    &nbsp;&nbsp;&nbsp;  /  &nbsp;&nbsp;&nbsp;  FT item
+                  <input type="checkbox" onblur="dirty=&quot;true&quot;" onchange="dirty=&quot;true&quot;;" name="ft_item">     &nbsp;&nbsp;&nbsp;   /  &nbsp;&nbsp;&nbsp;  Org Item:
+                  <input type="checkbox" onblur="dirty=&quot;true&quot;" onchange="dirty=&quot;true&quot;;" name="org_item">
+                </td>
+              </tr>
+              <tr>
+                <td width="40%">Contract Comments</td>
+                <td colspan="3">
+                  <textarea style="width: 343px;height: 40px;"></textarea>
+                </td>
+              </tr>
+              <tr>
+                <td width="40%">Item Description</td>
+                <td colspan="3">
+                  <input name="Company" size="40" value="" type="text">
+                </td>
+              </tr>
+              <tr>
+                <td width="40%">Green Comments(Visible To Members)</td>
+                <td colspan="3">
+                  <textarea style="width: 343px;height: 40px;"></textarea>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </td>
+        <td colspan="6" width="50%">
+           <table width="100%" class="table table-striped table-bordered commit" style="margin-bottom:0px;">
+            <tbody>
+              <tr>
+                <td width="40%">Lot Ship</td>
+                <td>
+                  <input name="Company" size="20" value="" type="text">
+                </td>
+                <td width="40%">FTProof</td>
+                <td>
+                  <input  size="20" value="" type="checkbox">
+                </td>
+              </tr>
+              <tr>
+                <td width="40%">Seller Flo-Id</td>
+                <td>
+                  <input name="Company" size="20" value="" type="text">
+                </td>
+                <td width="40%">Status</td>
+                <td>
+                  <select name="country_type" id="sel_type">
+                    <option value="MC">Signed</option>
+                    <option value="V">Offered</option>
+                  </select>
+                </td>
+              </tr>
+              <tr>
+                <td width="40%">Farm Region</td>
+                <td>
+                  <input name="Company" size="20" value="" type="text">
+                </td>
+                <td width="40%">Producer Flo-Id</td>
+                <td>
+                  <input name="Company" size="20" value="" type="text">
+                </td>
+              </tr>
+              <tr>
+                <td width="40%">Contract Date</td>
+                <td>
+                  <input type="text" onblur="\'dirty=&quot;true&quot;\'" onchange="\'dirty=&quot;true&quot;;\'" name="contract_date" size="15" value="2017-10-30">
+                </td>
+                <td>Pay Terms</td>
+                <td>
+                  <select name="country_type" id="sel_type">
+                    <option value="MC">CAD</option>
+                    <option value="V">LOC</option>
+                    <option>DD</option>
+                  </select>
+                </td>
+                
+              </tr>
+              <tr>
+                <td width="40%">Quality Terms</td>
+                <td>
+                  <select name="sel_quality">
+                    <option value="SAS Preship">SAS Preship</option>
+                    <option value="SAS Arrival">SAS Arrival</option>
+                    <option value="NANS">NANS</option></select>
+                </td>
+                <td>INCO Terms</td>
+                <td>
+                  <select name="sel_inco">
+                    <option value="CFR">CFR</option>
+                    <option value="DAF">DAF</option>
+                    <option value="DLD">DLD</option>
+                    <option value="EDK">EDK</option>
+                    <option value="EWH">EWH</option>
+                    <option value="FCA">FCA</option>
+                    <option value="FOB">FOB</option>
+                    <option value="FOT">FOT</option>
+                    <option value="SPOT">SPOT</option>
+                  </select>
+                </td>
+                
+              </tr>
+              <tr>
+                <td width="40%">Bags Available</td>
+                <td>
+                  <input name="Company" size="20" value="" type="text">
+                </td>
+                <td width="40%">Scribd ID:</td>
+                <td>
+                  <input name="Company" size="20" value="" type="text">
+                </td>
+              </tr>
+              <tr>
+                <td width="40%">Three Party Contract</td>
+                <td>
+                  <input  value="" type="checkbox">
+                </td>
+                <td width="40%">GUID ID::</td>
+                <td>
+                  <input name="Company" size="20" value="" type="text">
+                </td>
+              </tr>
+              <tr>
+                <td width="40%">Item Notes (Visiable to Staff Only) :</td>
+                <td colspan="3">
+                  <textarea style="width: 343px;height: 30px;"></textarea>
+                </td>
+              </tr>
+            </tbody>
+           </table>
+       
+        </td>
+      </tr>
+      <tr>
+        <td colspan="12">Physical</td>
+      </tr>
+      <tr>
+        <td colspan="6" width="50%">
+           <table width="100%" class="table table-striped table-bordered commit" style="margin-bottom:0px;">
+            <tbody>
+              <tr>
+                <td width="40%">Grade</td>
+                <td>
+                  <input name="Company" size="20" value="" type="text">
+                </td>
+                <td width="40%">Process Type</td>
+                <td>
+                  <input  size="20" value="" type="text">
+                </td>
+              </tr>
+              <tr>
+                <td width="40%">Moisture Min</td>
+                <td>
+                  <input name="Company" size="20" value="" type="text">
+                </td>
+                <td width="40%"> Moisture Max</td>
+                <td>
+                  <input name="Company" size="20" value="" type="text">
+                </td>
+              </tr>
+               <tr>
+                <td width="40%">Min Score</td>
+                <td>
+                  <input name="Company" size="20" value="" type="text">
+                </td>
+                <td width="40%">Primary Defets</td>
+                <td>
+                  <input name="Company" size="20" value="" type="text">
+                </td>
+              </tr>
+              <tr>
+                <td width="40%">Special Process</td>
+                <td>
+                  <input name="Company" size="20" value="" type="text">
+                </td>
+                <td width="40%">Screen Size</td>
+                <td>
+                  <input name="Company" size="20" value="" type="text">
+                </td>
+              </tr>
+            
+              
+            </tbody>
+           </table>
+            
+        </td>
+        <td colspan="6">
+          <table width="100%" class="table table-striped table-bordered commit" style="margin-bottom:0px;">
+            <tbody>
+              <tr>
+                <td width="40%">Secondary Defects</td>
+                <td>
+                  <input name="Company" size="20" value="" type="text">
+                </td>
+                <td width="40%">Water Activity</td>
+                <td>
+                  <input  size="20" value="" type="text">
+                </td>
+              </tr>
+              <tr>
+                <td width="40%">GrainPro: </td>
+                <td>
+                  <input name="Company" size="20" value="" type="checkbox">
+                </td>
+                <td width="40%">Grain Pro Cost</td>
+                <td>
+                  <input name="Company" size="20" value="" type="text">
+                </td>
+              </tr>
+               <tr>
+                <td width="40%">Target Score</td>
+                <td colspan="3">
+                  <input name="Company" size="40" value="" type="text">
+                </td>
+              </tr>
+              <tr>
+                <td width="40%">Quality Desciption</td>
+                <td colspan="3">
+                  <input name="Company" size="40" value="" type="text">
+                </td>
+              </tr>
+              
+            
+              
+            </tbody>
+           </table>
+        </td>
+      </tr>
+      <tr>
+        <td colspan="12">Shipping</td>
+      </tr>
+      <tr>
+        <td colspan="6" width="50%">
+           <table width="100%" class="table table-striped table-bordered commit" style="margin-bottom:0px;">
+            <tbody>
+              <tr>
+                <td width="40%">Ship Port </td>
+                <td>
+                  <select name="sel_ship">
+                     <option value="">Select Port</option>
+                     <option value="8">Arica</option>
+                     <option value="18">bangkok</option>
+                     <option value="20">Belawan</option>
+                     <option value="14">Bremen</option>
+                     <option value="3">Buenaventura</option>
+                     <option value="4">Cartagena</option>
+                     <option value="16">Djibouti</option>
+                     <option value="7">Guayaquil</option>
+                     <option value="17">Mombassa</option>
+                     <option value="11">New York, NY</option>
+                     <option value="12">Newark, NJ</option>
+                     <option value="13">Oakland, CA</option>
+                     <option value="9">Paita</option>
+                     <option value="6">Puerto Barrios</option>
+                     <option value="1">Puerto Callao</option>
+                     <option value="10">Puerto Corinto</option>
+                     <option value="2">Puerto Cortes</option>
+                     <option value="19">Santa Marta</option>
+                     <option value="5">Veracruz</option>
+                  </select>
+                </td>
+                <td width="40%">Dest Port</td>
+                <td>
+                  <select name="sel_dest">
+                    <option value="">Select Port</option>
+                    <option value="8">Arica</option>
+                    <option value="18">bangkok</option>
+                    <option value="20">Belawan</option>
+                    <option value="14">Bremen</option>
+                    <option value="3">Buenaventura</option>
+                    <option value="4">Cartagena</option>
+                    <option value="16">Djibouti</option>
+                    <option value="7">Guayaquil</option>
+                    <option value="17">Mombassa</option>
+                    <option value="11">New York, NY</option>
+                    <option value="12">Newark, NJ</option><option value="13">Oakland, CA</option><option value="9">Paita</option><option value="6">Puerto Barrios</option><option value="1">Puerto Callao</option><option value="10">Puerto Corinto</option><option value="2">Puerto Cortes</option><option value="19">Santa Marta</option><option value="5">Veracruz</option></select>
+                </td>
+              </tr>
+             
+              <tr>
+                <td width="40%">Shipping Date </td>
+                <td>
+                  <input onblur="dirty=&quot;true&quot;" onchange="dirty=&quot;true&quot;;" type="text" name="port_arrival_date" id="port_arrival_date" size="15" value="">
+                </td>
+                <td width="40%">Port Arrival Date </td>
+                <td>
+                 <input onblur="dirty=&quot;true&quot;" onchange="dirty=&quot;true&quot;;" type="text" name="port_arrival_date" id="port_arrival_date" size="15" value="">
+                </td>
+              </tr>
+               <tr>
+                <td width="40%">Container# </td>
+                <td>
+                  <input name="Company" size="20" value="" type="text">
+                </td>
+                <td width="40%">Cost per Bag:</td>
+                <td>
+                  <input name="Company" size="20" value="" type="text">
+                </td>
+              </tr>
+               <tr>
+                <td width="40%">Warehouse:</td>
+                <td>
+                  <select name="warehouse">
+                      <option value="H">Hillside, NJ
+                      </option><option value="T">Toronto
+                      </option><option value="E">Enroute
+                      </option><option value="J">Kearney NJ
+                      </option><option value="F">Future
+                      </option><option value="C" selected="">Contracted
+                      </option><option value="V">Vancover
+                      </option><option value="X">Loss
+                      </option><option value="N">New Orleans
+                      </option><option value="S">San Leandro, CA
+                      </option>
+                    </select>
+                </td>
+                <td width="40%">FDA & Customs Clear Date: </td>
+                <td>
+                  <input name="Company" size="20" value="" type="text">
+                </td>
+              </tr>
+              
+            
+              
+            </tbody>
+           </table>
+            
+        </td>
+        <td colspan="6">
+          <table width="100%" class="table table-striped table-bordered commit" style="margin-bottom:0px;">
+            <tbody>
+              <tr>
+                <td width="40%">Documents:</td>
+                <td>
+                  <input name="Company" size="20" value="" type="text">
+                </td>
+                <td width="40%">ISF Received </td>
+                <td>
+                  <input  size="20" value="" type="text">
+                </td>
+              </tr>
+              <tr>
+                <td width="40%">BL Number </td>
+                <td>
+                  <input name="Company" size="20" value="" type="text">
+                </td>
+                <td width="40%">Marks: </td>
+                <td>
+                  <input name="Company" size="20" value="" type="text">
+                </td>
+              </tr>
+               <tr>
+                <td width="40%">Warehouse Code: </td>
+                <td>
+                  <input name="Company" size="20" value="" type="text">
+                </td>
+                <td width="40%">Bags Lbs: </td>
+                <td>
+                  <input name="Company" size="20" value="" type="text">
+                </td>
+              </tr>
+              <tr>
+                <td width="40%">Available in Warehouse:</td>
+                <td colspan="3">
+                  <input name="Company" size="40" value="" type="text">
+                </td>
+              </tr>
+              
+            
+              
+            </tbody>
+           </table>
+        </td>
+      </tr>
+      <tr>
+        <td colspan="12">Pricing</td>
+      </tr>
+      <tr>
+        <td colspan="6" width="50%">
+           <table width="100%" class="table table-striped table-bordered commit" style="margin-bottom:0px;">
+            <tbody>
+              <tr>
+                <td width="40%">Fixed Date </td>
+                <td>
+                  <input type="text" onblur="dirty=&quot;true&quot;" onchange="dirty=&quot;true&quot;;" name="fixed_date" size="15" value="">
+                </td>
+                <td width="40%">NYC</td>
+                <td>
+                  <input type="text" size="20">
+                </td>
+              </tr>
+             
+              <tr>
+                <td width="40%">Fixation  </td>
+                <td>
+                  <select name="sel_fixation"><option value="Sellers">Sellers</option><option value="Buyers">Buyers</option><option value="Fixed">Fixed</option>"&gt;</select>
+                </td>
+                <td width="40%">Margin </td>
+                <td>
+                 <input  type="text"  size="20" value="">
+                </td>
+              </tr>
+               <tr>
+                <td width="40%">FOB Min Price  </td>
+                <td>
+                  <input name="Company" size="20" value="" type="text">
+                </td>
+                <td width="40%">Option:</td>
+                <td>
+                  <select name="sel_option">
+                    <option value="NA">NA</option>
+                    <option value="Call">Call</option>
+                    <option value="Put">Put</option>
+                  </select>
+                </td>
+              </tr>
+               <tr>
+                <td width="40%">Impact Fee </td>
+                <td>
+                  <input type="text" size="20" name="">
+                </td>
+                <td width="40%">Fixed Comment </td>
+                <td>
+                  <textarea maxlength="255" style="height:30px;width:200px;" onblur="dirty=&quot;true&quot;" onchange="dirty=&quot;true&quot;;" type="text" name="earliest_fix_date"></textarea>
+                </td>
+              </tr>
+            </tbody>
+           </table>
+            
+        </td>
+        <td colspan="6">
+          <table width="100%" class="table table-striped table-bordered commit" style="margin-bottom:0px;">
+            <tbody>
+              <tr>
+                <td width="40%">C Month:</td>
+                <td>
+                 <select name="c_month" id="c_month"><option value="">-C Month-</option><option value="16">May 17</option><option value="15">Jul 17</option><option value="14">Sep 16</option><option value="13">Mar 17</option><option value="12">Jul 16</option><option value="11">Dec 16</option><option value="10">Dec 18</option><option value="9">Sep 18</option><option value="8">Jul 18</option><option value="7">May 18</option><option value="6">Mar 18</option><option value="5">Dec 17</option><option value="4">Sep 17</option></select>
+                </td>
+                <td width="40%">Fixed Price </td>
+                <td>
+                  <input  size="20" value="" type="text">
+                </td>
+              </tr>
+               <tr>
+                <td width="40%">FOB Diff: </td>
+                <td>
+                  <input name="Company" size="20" value="" type="text">
+                </td>
+                <td width="40%">FOB Trade Floor: </td>
+                <td>
+                  <input name="Company" size="20" value="" type="text">
+                </td>
+              </tr>
+              <tr>
+                <td width="40%">Option Strike</td>
+                <td>
+                  <input name="Company" size="20" value="" type="text">
+                </td>
+                <td width="40%">Option Cost : </td>
+                <td>
+                  <input name="Company" size="20" value="" type="text">
+                </td>
+              </tr>
+              <tr>
+                <td width="40%">Freight Costs</td>
+                <td>
+                  <input name="Company" size="20" value="" type="text">
+                </td>
+                <td width="40%">Addl Import Costs </td>
+                <td>
+                  <input name="Company" size="20" value="" type="text">
+                </td>
+              </tr>
+              
+            
+              
+            </tbody>
+           </table>
+        </td>
+      </tr>
+      <tr>
+        <td colspan="12">Finance</td>
+      </tr>
+      <tr>
+        <td colspan="6" width="50%">
+           <table width="100%" class="table table-striped table-bordered commit" style="margin-bottom:0px;">
+            <tbody>
+              <tr>
+                <td width="40%">Pre-Finance Partner: </td>
+                <td colspan="3">
+                  <input type="text"  size="40" value="">
+                </td>
+              </tr>
+              <tr>
+                <td width="40%">Pay Status </td>
+                <td colspan="3">
+                  <select name="sel_producer"><option value=""></option><option value="PreFinance">PreFinance</option><option value="Partial">Partial</option><option value="Paid">Paid</option>"&gt;</select>
+                </td>
+              </tr>
+              
+            </tbody>
+           </table>
+            
+        </td>
+        <td colspan="6">
+          <table width="100%" class="table table-striped table-bordered commit" style="margin-bottom:0px;">
+            <tbody>
+              <tr>
+                <td width="40%">Pre-Finance Amount: </td>
+                <td>
+                 <input  size="20" value="" type="text">
+                </td>
+                <td width="40%">Pre-Finance Amount: </td>
+                <td>
+                  <input  size="20" value="" type="text">
+                </td>
+              </tr>
+               <tr>
+                <td width="40%">Pay Comment:</td>
+                <td colspan="3">
+                  <input name="Company" size="40" value="" type="text">
+                </td>
+              </tr>
+              
+            </tbody>
+           </table>
+        </td>
+      </tr>
+       <tr>
+        <td colspan="12">Transfer</td>
+      </tr>
+      <tr>
+        <td colspan="6" width="50%">
+           <table width="100%" class="table table-striped table-bordered commit" style="margin-bottom:0px;">
+            <tbody>
+              <tr>
+                <td width="40%">Prev In:  </td>
+                <td>
+                  <input type="text"  size="20" value="">
+                </td>
+                <td width="40%">Prev Out:  </td>
+                <td>
+                  <input type="text"  size="20" value="">
+                </td>
+              </tr>
+            </tbody>
+           </table>
+            
+        </td>
+        <td colspan="6">
+          <table width="100%" class="table table-striped table-bordered commit" style="margin-bottom:0px;">
+            <tbody>
+              <tr>
+                <td width="40%">Transfer </td>
+                <td>
+                 <input  size="20" value="" type="text">
+                </td>
+                <td>
+                 <select name="transwarehouse"><option value="">
+                    </option><option value="N">New Orleans
+                    </option><option value="T">Toronto
+                    </option><option value="V">Vancover
+                    </option><option value="E">Enroute
+                    </option><option value="J">Kearney NJ
+                    </option><option value="X">Loss
+                    </option><option value="F">Future
+                    </option><option value="H">Hillside, NJ
+                    </option><option value="S">San Leandro, CA
+                    </option></select>
+                </td>
+              </tr>
+               
+              
+            </tbody>
+           </table>
+        </td>
+      </tr>
+    
+      
+        
+            <tr>
+        <td colspan="12" align="right">
+          <input value="Add New" type="SUBMIT" class="btn btn-success btn_style">
+          
+        </td>
+      </tr>
+              
+    </tbody></table>
+  </form>
+</div>
+</body>
+</html>
